@@ -20,13 +20,12 @@ export default class App extends React.Component {
     const translate = (totranslate) => {
       let textArray = totranslate.split("");
       let translation = "";
-      console.log(textArray);
       textArray.map((element) => {
         let newThing = Data.find((e) => e.char === element.toLowerCase());
         if (newThing === undefined) {
           return newThing === "";
         }
-        translation += newThing.morse + " ";
+        translation += newThing.morse;
         return true;
       });
 
@@ -38,15 +37,20 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Morse Code Translator</h1>
-        <form>
-          <textarea
-            type="text"
-            value={this.state.userInput}
-            onChange={this.handleChange}
-            placeholder="type something"
-          />
-        </form>
-        <p>{this.state.morse}</p>
+
+        <textarea
+          type="text"
+          value={this.state.userInput}
+          onChange={this.handleChange}
+          placeholder="Type something here..."
+        />
+        <br />
+        <textarea
+          type="text"
+          value={this.state.morse}
+          placeholder="Morse comes out here..."
+          readOnly
+        />
       </div>
     );
   }

@@ -6,6 +6,7 @@
 
 body {
   font-family: helvetica, arial, sans-serif;
+  margin-top: 1rem;
 }
 
 .App {
@@ -13,13 +14,18 @@ body {
   width: 100vw;
   height: 100vh;
   flex-direction: column;
+  align-items: center;
   textarea {
     width: 100%;
     max-width: 600px;
     height: 10rem;
     resize: none;
+    border: 3px solid #222;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
   }
-  p {
-    font-size: 3rem;
+  textarea:focus {
+    outline: none;
   }
 }
