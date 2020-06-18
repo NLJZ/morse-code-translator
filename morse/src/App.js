@@ -1,6 +1,5 @@
 import React from "react";
 import Data from "./data.json";
-console.log(Data);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,15 +14,20 @@ export default class App extends React.Component {
       this.setState({
         userInput: e.target.value,
       });
-      this.translate(e.target.value);
+      translate(e.target.value);
     };
 
-    this.translate = (totranslate) => {
+    const translate = (totranslate) => {
       let textArray = totranslate.split("");
       let translation = "";
+      console.log(textArray);
       textArray.map((element) => {
-        let newThing = Data.find((e) => e.char === element);
+        let newThing = Data.find((e) => e.char === element.toLowerCase());
+        if (newThing === undefined) {
+          return newThing === "";
+        }
         translation += newThing.morse + " ";
+        return true;
       });
 
       this.setState({
