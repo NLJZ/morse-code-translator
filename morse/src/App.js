@@ -1,18 +1,34 @@
 import React from "react";
+import Data from "./data.json";
+console.log(Data);
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userInput: "",
-      list: [],
+      morse: "",
     };
   }
   render() {
     this.handleChange = (e) => {
-      console.log(e.target.value);
-      this.setState({ userInput: e.target.value.trim() });
-      //console.log(this.state.userInput);
+      this.setState({
+        userInput: e.target.value,
+      });
+      this.translate(this.state.userInput);
+    };
+
+    this.translate = (totranslate) => {
+      let textArray = totranslate.split("");
+      let translation = "";
+      textArray.map((element) => {
+        let newThing = Data.find((e) => e.char === element);
+        translation += newThing.morse + " ";
+      });
+
+      this.setState({
+        morse: translation,
+      });
     };
 
     return (
@@ -26,6 +42,7 @@ export default class App extends React.Component {
             placeholder="type something"
           />
         </form>
+        <p>{this.state.morse}</p>
       </div>
     );
   }
