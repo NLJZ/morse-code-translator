@@ -15,7 +15,7 @@ export default class App extends React.Component {
       this.setState({
         userInput: e.target.value,
       });
-      this.translate(this.state.userInput);
+      this.translate(e.target.value);
     };
 
     this.translate = (totranslate) => {
